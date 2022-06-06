@@ -1,13 +1,22 @@
-code_name: 'UNKNOWN'
+code_name: 'MOPAC'
 docker:
-  image_name: 'mdiengine'
+  image_name: 'mdi/mopac'
 
   build_image:
-    - echo "Insert commands to build the environment for the engine here"
-    - echo "This will often include using apt-get or pip to install dependencies"
+    - apt-get update
+    - apt-get install -y git vim libblas-dev liblapack-dev
+    - pip install cmake
 
   build_engine:
-    - echo "Insert commands to build your engine code here"
+    - |
+      if [ ! -d "build/mopac" ]; then
+        git clone https://github.com/MolSSI-MDI/mopac.git --branch mdiupdate build/mopac
+      fi
+    - cd build/mopac
+    - mkdir -p build
+    - cd build
+    - cmake -DMDI=ON ..
+    - make -j 4 VERBOSE=1
 
   validate_engine:
     - echo "Insert code that will confirm that your code has been built successfully"
@@ -18,3 +27,16 @@ engine_tests:
   script:
     - echo "Insert commands to run an example calculation here"
     - exit 1
+
+
+run_scripts:
+
+  test:
+    containers:
+      container1:
+        image: 'mdi/mopac'
+        script:
+          - cd tests/formic
+          - /repo/build/mopac/build/mopac formic_acid --mdi "-role ENGINE -name MM -method TCP -port 8021"
+
+
