@@ -26,7 +26,7 @@ engine_tests:
   # Provide at least one example input that can be used to test your code's MDI functionality
   script:
     - cd tests/formic
-    - /repo/build/mopac/build/mopac formic_acid --mdi "-role ENGINE -name MM -method TCP -port 8021"
+    - /repo/build/mopac/build/mopac formic_acid --mdi "${MDI_OPTIONS}"
 
 
 run_scripts:
