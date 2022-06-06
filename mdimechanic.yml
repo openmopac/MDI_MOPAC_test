@@ -19,14 +19,14 @@ docker:
     - make -j 4 VERBOSE=1
 
   validate_engine:
-    - echo "Insert code that will confirm that your code has been built successfully"
-    - exit 1
+    - cd tests/formic
+    - /repo/build/mopac/build/mopac formic_acid
 
 engine_tests:
   # Provide at least one example input that can be used to test your code's MDI functionality
   script:
-    - echo "Insert commands to run an example calculation here"
-    - exit 1
+    - cd tests/formic
+    - /repo/build/mopac/build/mopac formic_acid --mdi "-role ENGINE -name MM -method TCP -port 8021"
 
 
 run_scripts:
