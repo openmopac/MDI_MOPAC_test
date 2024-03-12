@@ -6,6 +6,7 @@ docker:
     - apt-get update
     - apt-get install -y git vim libblas-dev liblapack-dev
     - pip install cmake
+    - pip install numpy
 
   build_engine:
     - |
