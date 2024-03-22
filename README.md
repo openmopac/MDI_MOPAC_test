@@ -40,9 +40,9 @@ Supported commands are indicated in green, while unsupported commands are indica
 
 | | @DEFAULT |
 | ------------- | ------------- |
-| &lt;@ | ![command](report/badges/box-lightgray.svg) |
+| &lt;@ | ![command](report/badges/box-brightgreen.svg) |
 | &lt;CELL | ![command](report/badges/box-lightgray.svg) |
-| &lt;CELL_DISPL | ![command](report/badges/box-lightgray.svg) |
+| &lt;CELL_DISPL | ![command](report/badges/box-brightgreen.svg) |
 | &lt;CHARGES | ![command](report/badges/box-lightgray.svg) |
 | &lt;COORDS | ![command](report/badges/box-lightgray.svg) |
 | &lt;DIMENSIONS | ![command](report/badges/box-lightgray.svg) |
