@@ -35,7 +35,7 @@ run_scripts:
   test:
     containers:
       container1:
-        image: 'mdi/mopac'
+        image: 'mdi/mopac:dev'
         script:
           - cd tests/formic
           #- /repo/build/mopac/build/mopac formic_acid --mdi "-role ENGINE -name MM -method TCP -hostname localhost -port 8021"
