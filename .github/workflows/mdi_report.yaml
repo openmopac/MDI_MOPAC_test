@@ -17,7 +17,9 @@ jobs:
         run: pip install mdimechanic
 
       - name: Create MDI Mechanic report
-        run: mdimechanic report
+        run: |
+          alias docker-compose='docker compose'
+          mdimechanic report
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
