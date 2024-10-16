@@ -18,7 +18,7 @@ jobs:
 
       - name: Create MDI Mechanic report
         run: |
-          alias docker-compose='docker compose'
+          docker compose version
           mdimechanic report
 
       - name: Create Pull Request
