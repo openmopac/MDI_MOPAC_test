@@ -16,6 +16,9 @@ jobs:
       - name: Install MDI Mechanic
         run: pip install mdimechanic
 
+      - name: Build the MDI Engine
+        run: mdimechanic build
+
       - name: Create MDI Mechanic report
         run: mdimechanic report
 
