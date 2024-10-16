@@ -1,0 +1,25 @@
+name: MDI Mechanic report
+
+on: workflow_dispatch
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.7'
+
+      - name: Install MDI Mechanic
+        run: pip install mdimechanic
+
+      - name: Create MDI Mechanic report
+        run: mdimechanic report
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          title: Update MDI Mechanic report
