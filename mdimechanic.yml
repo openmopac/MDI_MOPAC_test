@@ -22,6 +22,8 @@ docker:
   validate_engine:
     - cd tests/formic
     - /repo/build/mopac/build/mopac formic_acid
+    - echo "Validation failure test..."
+    - exit 1
 
 engine_tests:
   # Provide at least one example input that can be used to test your code's MDI functionality
@@ -29,13 +31,12 @@ engine_tests:
     - cd tests/formic
     - /repo/build/mopac/build/mopac formic_acid --mdi "${MDI_OPTIONS}"
 
-
 run_scripts:
 
   test:
     containers:
       container1:
-        image: 'mdi/mopac'
+        image: 'mdi/mopac:dev'
         script:
           - cd tests/formic
           #- /repo/build/mopac/build/mopac formic_acid --mdi "-role ENGINE -name MM -method TCP -hostname localhost -port 8021"
