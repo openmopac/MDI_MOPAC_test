@@ -22,8 +22,7 @@ docker:
   validate_engine:
     - cd tests/formic
     - /repo/build/mopac/build/mopac formic_acid
-    - echo "Validation failure test..."
-    - exit 1
+    - echo "MDI_OPTIONS = ${MDI_OPTIONS}"
 
 engine_tests:
   # Provide at least one example input that can be used to test your code's MDI functionality
