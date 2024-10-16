@@ -147,3 +147,7 @@ docker/.temp
 
 # Source directory
 /source
+
+# Ignore MOPAC outputs
+*.arc
+*.out
