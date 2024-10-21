@@ -19,7 +19,7 @@ while iarg < len(sys.argv):
 
 # Connect to the engine
 comm = mdi.MDI_Accept_Communicator()
-print(f"Communicator: {comm})
+print(f"Communicator: {comm}")
 
 # Get the name of the engine, which will be checked and verified at the end
 mdi.MDI_Send_Command("<NAME", comm)
@@ -46,7 +46,8 @@ print(f"ENERGY: {energy}")
 
 # Adjust the geometry of the molecule
 print("Sending new coordinates...")
-coords *= 1.1
+for coord in coords:
+    coord *= 1.1
 mdi.MDI_Send_Command(">COORDS", comm)
 mdi.MDI_Send(coords, 3 * natoms, mdi.MDI_DOUBLE, comm)
 
