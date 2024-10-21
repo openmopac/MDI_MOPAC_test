@@ -18,6 +18,8 @@ docker:
     - cd build
     - cmake -DMDI=ON ..
     - make -j 4 VERBOSE=1
+    - cd mdi_build-prefix/src/mdi_build
+    - pip install .
 
   validate_engine:
     - cd tests/formic
@@ -38,7 +40,9 @@ run_scripts:
         image: 'mdi/mopac:dev'
         script:
           - cd tests/formic
-          #- /repo/build/mopac/build/mopac formic_acid --mdi "-role ENGINE -name MM -method TCP -hostname localhost -port 8021"
-          - /repo/build/mopac/build/mopac formic_acid
+          - /repo/build/mopac/build/mopac formic_acid -mdi "-role ENGINE -name mopac -method TCP -hostname localhost -port 8021" &
+          - python3 driver.py -mdi "-role DRIVER -name driver -method TCP -port 8021" &
+          - wait
+          - cat formic_acid.out
 
 
