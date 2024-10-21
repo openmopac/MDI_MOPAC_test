@@ -7,6 +7,7 @@ docker:
     - apt-get install -y git vim libblas-dev liblapack-dev
     - pip install cmake
     - pip install numpy
+    - pip install pymdi
 
   build_engine:
     - |
@@ -18,8 +19,6 @@ docker:
     - cd build
     - cmake -DMDI=ON ..
     - make -j 4 VERBOSE=1
-    - cd mdi_build-prefix/src/mdi_build
-    - pip install .
 
   validate_engine:
     - cd tests/formic
