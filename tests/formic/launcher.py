@@ -18,4 +18,4 @@ while iarg < len(sys.argv):
     iarg += 1
 
 # Open plugin
-mdi.MDI_Launch_plugin("mopac", "formic_acid2 -mdi \"-name QM -role ENGINE -method LINK\"", None, None, None)
+mdi.MDI_Launch_plugin("mopac", "formic_acid3 -mdi \"-role ENGINE -name mopac -method TCP -hostname localhost -port 8021\"", None, None, None)
