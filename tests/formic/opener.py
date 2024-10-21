@@ -18,7 +18,7 @@ while iarg < len(sys.argv):
     iarg += 1
 
 # Open plugin
-comm = mdi.MDI_Open_plugin("mopac", "formic_acid3 -mdi \"-role ENGINE -name mopac -method TCP -hostname localhost -port 8021\"", None)
+comm = mdi.MDI_Open_plugin("mopac", "formic_acid3 -mdi \"-role ENGINE -name mopac -method LINK\"", None)
 print(f"Communicator: {comm}")
 
 # Get the name of the engine, which will be checked and verified at the end
