@@ -52,7 +52,7 @@ run_scripts:
           - cd tests/formic
           - cp formic_acid.mop formic_acid2.mop
           - python launcher.py &
-          - python driver.py -mdi "-role DRIVER -name driver -method TCP -port 8021" > driver2.out &
+          - python driver.py -mdi "-role DRIVER -name driver -method LINK" > driver2.out &
           - wait
           - cat driver2.out
           - cat formic_acid2.out
@@ -65,7 +65,7 @@ run_scripts:
         script:
           - cd tests/formic
           - cp formic_acid.mop formic_acid3.mop
-          - python opener.py -mdi "-role DRIVER -name driver -method TCP -port 8021" > opener.out
+          - python opener.py -mdi "-role DRIVER -name driver -method LINK" > opener.out
           - cat opener.out
           - cat formic_acid3.out
           - rm formic_acid3.mop
