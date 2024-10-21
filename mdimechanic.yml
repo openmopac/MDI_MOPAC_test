@@ -24,13 +24,12 @@ docker:
   validate_engine:
     - cd tests/formic
     - /repo/build/mopac/build/mopac formic_acid
-    - echo "MDI_OPTIONS = ${MDI_OPTIONS}"
 
 engine_tests:
-  # Provide at least one example input that can be used to test your code's MDI functionality
+  # Minimal example to test engine functionality
   script:
     - cd tests/formic
-    - /repo/build/mopac/build/mopac formic_acid --mdi "${MDI_OPTIONS}"
+    - /repo/build/mopac/build/mopac formic_acid -mdi "${MDI_OPTIONS}"
 
 run_scripts:
 
@@ -40,14 +39,7 @@ run_scripts:
         image: 'mdi/mopac:dev'
         script:
           - cd tests/formic
-          - /repo/build/mopac/build/mopac formic_acid -mdi "-role ENGINE -name mopac -method TCP -hostname localhost -port 8021" &
+          - /repo/build/mopac/build/mopac formic_acid -mdi "-role ENGINE -name mopac -method TCP -hostname mdi_mechanic -port 8021" &
           - python3 driver.py -mdi "-role DRIVER -name driver -method TCP -port 8021" &
           - wait
           - cat formic_acid.out
-
-  dummy:
-    containers:
-      container1:
-        image: 'mdi/mopac:dev'
-        script:
-          - echo "dummy test output"
