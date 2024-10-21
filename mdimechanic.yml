@@ -39,7 +39,7 @@ run_scripts:
         image: 'mdi/mopac:dev'
         script:
           - cd tests/formic
-          - /repo/build/mopac/build/mopac formic_acid -mdi "-role ENGINE -name mopac -method TCP -hostname mdi_mechanic -port 8021" &
+          - /repo/build/mopac/build/mopac formic_acid -mdi "-role ENGINE -name mopac -method TCP -hostname localhost -port 8021" &
           - python3 driver.py -mdi "-role DRIVER -name driver -method TCP -port 8021" > driver.out &
           - wait
           - cat driver.out
