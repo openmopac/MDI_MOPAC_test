@@ -24,7 +24,7 @@ jobs:
 
       - name: Run custom MDI Mechanic tests
         run: |
-          mdimechanic run --name "dummy"
+          mdimechanic run --name "engine"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
