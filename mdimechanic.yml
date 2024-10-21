@@ -51,9 +51,10 @@ run_scripts:
         script:
           - cd tests/formic
           - cp formic_acid.mop formic_acid2.mop
-          - python launcher.py &
+          - python launcher.py > launcher.out &
           - python driver.py -mdi "-role DRIVER -name driver -method LINK" > driver2.out &
           - wait
+          - cat launcher.out
           - cat driver2.out
           - cat formic_acid2.out
           - rm formic_acid2.mop
