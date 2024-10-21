@@ -19,6 +19,7 @@ while iarg < len(sys.argv):
 
 # Connect to the engine
 comm = mdi.MDI_Accept_Communicator()
+print(f"Communicator: {comm})
 
 # Get the name of the engine, which will be checked and verified at the end
 mdi.MDI_Send_Command("<NAME", comm)
