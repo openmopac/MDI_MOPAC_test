@@ -34,7 +34,7 @@ engine_tests:
 
 run_scripts:
 
-  test:
+  engine:
     containers:
       container1:
         image: 'mdi/mopac:dev'
@@ -45,4 +45,9 @@ run_scripts:
           - wait
           - cat formic_acid.out
 
-
+  dummy:
+    containers:
+      container1:
+        image: 'mdi/mopac:dev'
+        script:
+          - echo "dummy test output"
