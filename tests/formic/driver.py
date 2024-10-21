@@ -39,6 +39,10 @@ mdi.MDI_Send_Command("<COORDS", comm)
 coords = mdi.MDI_Recv(3 * natoms, mdi.MDI_DOUBLE, comm)
 print(f"COORDS: {coords}")
 
+mdi.MDI_Send_Command("<ENERGY", comm)
+energy = mdi.MDI_Recv(1, mdi.MDI_DOUBLE, comm)
+print(f"ENERGY: {energy}")
+
 # Adjust the geometry of the molecule
 print("Sending new coordinates...")
 coords *= 1.1
