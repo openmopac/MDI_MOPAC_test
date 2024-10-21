@@ -46,10 +46,9 @@ print(f"ENERGY: {energy}")
 
 # Adjust the geometry of the molecule
 print("Sending new coordinates...")
-for coord in coords:
-    coord *= 1.1
+coords2 = [coord*1.1 for coord in coords]
 mdi.MDI_Send_Command(">COORDS", comm)
-mdi.MDI_Send(coords, 3 * natoms, mdi.MDI_DOUBLE, comm)
+mdi.MDI_Send(coords2, 3 * natoms, mdi.MDI_DOUBLE, comm)
 
 # Get data from the second geometry of the molecule
 mdi.MDI_Send_Command("<NATOMS", comm)
