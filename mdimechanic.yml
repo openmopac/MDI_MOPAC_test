@@ -39,7 +39,33 @@ run_scripts:
         script:
           - cd tests/formic
           - /repo/build/mopac/build/mopac formic_acid -mdi "-role ENGINE -name mopac -method TCP -hostname localhost -port 8021" &
-          - python3 driver.py -mdi "-role DRIVER -name driver -method TCP -port 8021" > driver.out &
+          - python driver.py -mdi "-role DRIVER -name driver -method TCP -port 8021" > driver.out &
           - wait
           - cat driver.out
           - cat formic_acid.out
+
+  launch:
+    containers:
+      container1:
+        image: 'mdi/mopac:dev'
+        script:
+          - cd tests/formic
+          - cp formic_acid.mop formic_acid2.mop
+          - python launcher.py &
+          - python driver.py -mdi "-role DRIVER -name driver -method TCP -port 8021" > driver2.out &
+          - wait
+          - cat driver2.out
+          - cat formic_acid2.out
+          - rm formic_acid2.mop
+
+  open:
+    containers:
+      container1:
+        image: 'mdi/mopac:dev'
+        script:
+          - cd tests/formic
+          - cp formic_acid.mop formic_acid3.mop
+          - python opener.py -mdi "-role DRIVER -name driver -method TCP -port 8021" > opener.out
+          - cat opener.out
+          - cat formic_acid3.out
+          - rm formic_acid3.mop
