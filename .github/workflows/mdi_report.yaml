@@ -22,6 +22,10 @@ jobs:
       - name: Create MDI Mechanic report
         run: mdimechanic report
 
+      - name: Run custom MDI Mechanic tests
+        run: |
+          mdimechanic run --name "test"
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
