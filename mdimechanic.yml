@@ -51,11 +51,7 @@ run_scripts:
         script:
           - cd tests/formic
           - cp formic_acid.mop formic_acid2.mop
-          - python launcher.py > launcher.out &
-          - python driver.py -mdi "-role DRIVER -name driver -method LINK" > driver2.out &
-          - wait
-          - cat launcher.out
-          - cat driver2.out
+          - LD_PRELOAD=/repo/build/mopac/build/mdi_build-prefix/src/mdi_build-build/MDI_Library/libmdi.so python launcher.py
           - cat formic_acid2.out
           - rm formic_acid2.mop
 
@@ -66,7 +62,8 @@ run_scripts:
         script:
           - cd tests/formic
           - cp formic_acid.mop formic_acid3.mop
-          - python opener.py -mdi "-role DRIVER -name driver -method LINK -plugin_path /repo/build/mopac/build" > opener.out
+          #- python opener.py -mdi "-role DRIVER -name driver -method LINK -plugin_path /repo/build/mopac/build" > opener.out
+          - LD_PRELOAD=/repo/build/mopac/build/mdi_build-prefix/src/mdi_build-build/MDI_Library/libmdi.so python opener.py -mdi "-role DRIVER -name driver -method LINK -plugin_path /repo/build/mopac/build"
           - cat opener.out
           - cat formic_acid3.out
           - rm formic_acid3.mop
